@@ -63,14 +63,18 @@
         src: url(DepartureMono-Regular.woff2);
       }
 
-      @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap");
-
       :root {
+        --bg-color: black;
         --font-basis: 0.75vw;
         --base-color: #8f998a;
+        --base-dark: #8f998a;
+        --rebase-color: #8f998a;
+        --high-freq: #8f998a;
+        --high-freq-dark: #8f998a;
         --text-color: #6b6b6b;
+        --text-conteudo: #d8d8d8;
         --highlight-color: #069488;
-        --highlight-color: #a728e3;
+        --highlight-color: #da8cff;
         --superhighlight-color: #08d8b5;
         --superhighlight-color: #8900ff;
         --offset-x: 0px;
@@ -101,6 +105,7 @@
       #coverplate {
         position: fixed;
         width: calc(100% - 340px);
+        width: 100%;
         height: 100%;
         background-color: var(--base-color, #8f998a);
         top: 0;
@@ -120,35 +125,49 @@
         text-align: right;
       }
 
+      #filtros {
+        width: calc(100% - 16px - 70px) !important;
+        float: left;
+        margin-left: 25px;
+      }
+
+      .especial {
+        float: left;
+      }
+
       #recursos input {
         font-size: 18px;
         line-height: 24px;
-        width: calc(100% - 16px - 120px);
+
         padding: 8px;
         border: 0;
-        border-bottom: 1px dashed var(--text-color, #6b6b6b);
+        border-bottom: 1px dashed #00000033;
         background-color: transparent;
         outline: 0;
-        color: var(--text-color, #6b6b6b);
+        color: #00000033;
         font-family: "Departure";
         margin-right: 12px;
       }
 
+      input::placeholder {
+        color: #00000033;
+      }
+
       #recursos input:focus {
-        border-bottom: 1px dotted white;
-        color: white;
+        border-bottom: 1px dotted var(--text-color, #6b6b6b);
+        color: var(--text-color, #6b6b6b);
       }
 
       #recursos {
         color: var(--text-color, #6b6b6b);
-        font-family: "Source Code Pro", "Courier New", Courier, monospace;
+        font-family: "Courier New", Courier, monospace;
         font-size: 12px;
         line-height: 14px;
       }
 
       #recursos a {
         color: black;
-        font-family: "Source Code Pro", "Courier New", Courier, monospace;
+        font-family: monospace;
         font-size: 12px;
         line-height: 14px;
 
@@ -160,22 +179,23 @@
       }
 
       #recursos a:hover {
-        color: white;
+        color: var(--highlight-color);
+        color: var(--base-dark);
         text-decoration: none;
       }
 
-      #recursos span {
+      #recursos .submenus {
         display: block;
-        width: 320px;
-        position: fixed;
+        width: 300px;
+        position: fixed !important;
         z-index: 2;
         top: 190px;
-        left: 20px;
-
+        left: 40px;
         transition: transform 0.2s ease-out;
       }
 
-      #recursos .custombutton {
+      #recursos .custombutton,
+      #recursos .subcustombutton {
         padding: 8px;
         padding-top: 5px;
         padding-bottom: 5px;
@@ -199,7 +219,8 @@
         /*box-shadow: 3px 3px #00000099;*/
       }
 
-      #recursos .custombutton:hover {
+      #recursos .custombutton:hover,
+      #recursos .subcustombutton:hover {
         color: var(--text-color, #6b6b6b);
         border: 3px solid white;
         background-color: white;
@@ -218,6 +239,14 @@
 
       #criterio2 {
         transform: translateX(calc(var(--posx-criterios, "0px") + 340px));
+      }
+
+      #criterio3 {
+        transform: translateX(calc(var(--posx-criterios, "0px") + 680px));
+      }
+
+      #criterio4 {
+        transform: translateX(calc(var(--posx-criterios, "0px") + 1020px));
       }
 
       .ativo {
@@ -254,11 +283,12 @@
       }
 
       .pinta circle {
-        fill: var(--highlight-color, #069488) !important;
+        fill: var(--high-freq, #069488) !important;
       }
 
       #pages svg:hover circle {
         fill: var(--superhighlight-color, #08d8b5);
+        fill: var(--highlight-color, #069488);
       }
 
       .wrap {
@@ -266,6 +296,7 @@
         right: 0;
         top: 0;
         background-color: white;
+        background-color: black;
         box-shadow: 3px 3px 12px 1px #444444bf;
         width: calc(100% - 100px);
         height: calc(100% - 100px);
@@ -276,10 +307,11 @@
         z-index: 5;
       }
 
-      #conteudo {
+      .conteudo {
         width: 100%;
         height: 100%;
-        overflow-y: auto;
+        overflow: hidden;
+        color: var(--text-conteudo, #eeeeee);
       }
 
       .zoomout {
@@ -318,6 +350,7 @@
 
       #menu:hover svg path {
         fill: var(--superhighlight-color, #08d8b5);
+        fill: var(--base-dark);
       }
 
       h1 {
@@ -331,15 +364,16 @@
         -webkit-font-smoothing: antialiased;
         text-rendering: optimizelegibility;
         text-transform: uppercase;
-        color: var(--base-color, #8f998a);
+        color: var(--high-freq, #8f998a);
       }
 
       .bloquinhos {
-        column-count: 4;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 5rem;
-        font-size: 1.17rem;
+        font-size: 1.1rem;
         line-height: 1.37rem;
-        font-family: "Source Code Pro", "Courier New", Courier, monospace;
+        font-family: monospace;
         font-optical-sizing: auto;
         font-weight: 500;
         font-style: normal;
@@ -347,16 +381,379 @@
 
       p {
         margin-top: 0;
-        color: var(--text-color, #6b6b6b);
+        color: var(--text-conteudo, #6b6b6b);
+      }
+
+      #stats {
+        padding-right: 50px;
+      }
+
+      #stats p {
+        font-size: 1.3rem;
+        font-family: "Departure";
+        line-height: 1.5rem;
+      }
+
+      #stats svg {
+        display: block;
+        float: right;
+        width: 24px;
+        cursor: pointer;
+        margin-right: 4px;
+        vertical-align: middle;
+      }
+
+      #stats svg:hover .changestyle {
+        fill: var(--base-dark) !important;
       }
 
       b {
         color: var(--highlight-color, #244614);
       }
+
+      #curadoria {
+        height: 65vh;
+        overflow-y: auto;
+        padding-bottom: 20px;
+      }
+
+      ::-webkit-scrollbar {
+        width: 50px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        width: 50px;
+
+        background-color: #000000;
+        opacity: 1;
+        background-size: 4px 4px;
+        background-image: repeating-linear-gradient(
+          45deg,
+          var(--base-color, #244614) 0,
+          var(--base-color, #244614) 0.4px,
+          #000000 0,
+          #000000 50%
+        );
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background-color: var(--base-dark, #244614);
+        background-image: repeating-linear-gradient(
+          45deg,
+          var(--base-color, #244614) 0,
+          var(--base-color, #244614) 0.4px,
+          var(--base-dark, #244614) 0,
+          var(--base-dark, #244614) 50%
+        );
+      }
+
+      .blocoposts {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 18px 18px;
+        color: black;
+        text-decoration: none;
+        font-size: 1.1rem;
+        line-height: 1.17rem;
+        font-family: monospace;
+        font-optical-sizing: auto;
+        font-weight: 500;
+        font-style: normal;
+        padding-bottom: 8px;
+      }
+
+      .blocoposts span {
+        color: #ffffffaa;
+        line-height: 1.6rem;
+      }
+
+      .singlepost:hover span {
+        color: #000000aa;
+      }
+
+      @media screen and (min-width: 1200px) {
+        .blocoposts {
+          grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        }
+      }
+
+      .singlepost {
+        width: calc(100% - 22px);
+        padding: 7px;
+        background-color: white;
+
+        border: 1px solid #000000aa;
+        background-color: var(--superhighlight-color);
+        text-decoration: none;
+      }
+
+      .singlepost:hover {
+        box-shadow: 5px 4px 8px 1px #00000021;
+        background-color: var(--rebase-color);
+      }
+
+      .matframe {
+        width: 100%;
+        aspect-ratio: 4/3;
+        margin-bottom: 4px;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+      }
+
+      .singlepostlink {
+        color: #00000099;
+        font-weight: bold;
+        font-size: 1.35rem;
+        line-height: 1.5rem;
+      }
+
+      .tabelapictoX {
+        display: grid;
+        grid-template-columns: [init] 140px 320px 190px 1fr [fim];
+        gap: 24px 16px;
+        align-items: center;
+        font-size: 1.1rem;
+        line-height: 1.17rem;
+        font-family: monospace;
+      }
+
+      .tabeladinamic {
+        display: grid;
+        grid-template-columns: [init] 180px 320px 1fr 1fr 2fr [fim];
+        gap: 24px 16px;
+        align-items: center;
+        font-size: 1.1rem;
+        line-height: 1.17rem;
+        font-family: monospace;
+      }
+
+      .tabeladinamic .singlepost {
+        display: inline-block;
+        padding: 1px !important;
+      }
+
+      .tabeladinamic .matframe {
+        margin-bottom: 0;
+      }
+
+      .tabeladinamic div a,
+      .tabelapictoX div a,
+      .unicovideo div a,
+      .tabelaartefatos div a,
+      #glossario a {
+        text-decoration: none;
+        color: var(--highlight-color);
+      }
+
+      .tabeladinamic div a:hover,
+      .tabelapictoX div a:hover,
+      .unicovideo div a:hover,
+      .tabelaartefatos div a:hover,
+      #glossario a:hover {
+        text-decoration: none;
+        color: var(--high-freq);
+      }
+
+      .tabelaartefatos {
+        display: grid;
+        grid-template-columns: [init] 80px 2fr 1fr [fim];
+        gap: 8px 16px;
+        align-items: center;
+        font-size: 1.1rem;
+        line-height: 1.17rem;
+        font-family: monospace;
+      }
+
+      .tabelaartefatos a {
+        color: white;
+      }
+
+      .tabelaartefatos a:hover {
+        color: #00000099;
+      }
+
+      .tabelapictoX .singlepost {
+        display: inline-block;
+        padding: 1px !important;
+      }
+
+      .tabelapictoX .matframe {
+        margin-bottom: 0;
+      }
+
+      .linhafraca {
+        border-bottom: 1px solid #ffffff77;
+        height: 8px;
+      }
+
+      .tabelahead {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        position: sticky;
+        top: 0;
+        z-index: 3;
+        background-color: black;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 20px;
+        margin-left: -20px;
+        margin-bottom: -15px;
+      }
+
+      .logoextenso {
+        position: fixed;
+        bottom: 10px;
+        right: 20px;
+        width: 60px;
+        z-index: 2000;
+        transition: all 0.3s ease-out;
+      }
+
+      .logoextenso:hover {
+        cursor: pointer !important;
+      }
+
+      .logoextenso:hover path,
+      .logoextenso:hover ellipse {
+        fill: var(--base-color) !important;
+      }
+
+      .zoomlogo {
+        bottom: 20px;
+        bottom: -15px;
+        right: -25px;
+        width: 120px;
+
+        transition: all 0.3s ease-out;
+      }
+
+      .unicovideo {
+        display: grid;
+        grid-template-columns: 1fr 160px;
+        width: 100%;
+        gap: 20px 20px;
+        font-size: 1.25rem;
+        line-height: 1.7rem;
+        font-family: "Departure";
+        align-items: end;
+      }
+
+      .big {
+        width: calc(100% - 22px);
+        aspect-ratio: 16/9;
+        max-height: 61vh;
+        border: 1px solid var(--high-freq);
+        padding: 10px;
+      }
+
+      .botvolta {
+        width: 40px;
+      }
+
+      .botvolta path {
+        fill: var(--highlight-color);
+      }
+
+      .botvolta:hover path {
+        fill: var(--high-freq);
+      }
+
+      #glossario {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px 40px;
+        width: calc(100% - 40px);
+        height: 70.5vh;
+        overflow-y: auto !important;
+        padding-right: 40px;
+      }
+
+      #glossario h3 {
+        font-size: 1.7rem;
+        line-height: 2rem;
+        padding-bottom: 10px;
+      }
+
+      #glossariotipo {
+        font-size: 1.1rem;
+        line-height: 1.37rem;
+        font-family: monospace;
+        height: auto !important;
+        grid-column: 1 / span 2;
+      }
+
+      #glossariopicto {
+        font-size: 1.1rem;
+        line-height: 1.37rem;
+        font-family: monospace;
+        height: auto !important;
+        grid-column: 1;
+      }
+
+      #glossariodina {
+        font-size: 1.1rem;
+        line-height: 1.37rem;
+        font-family: monospace;
+        height: auto !important;
+        grid-column: 2;
+      }
     </style>
   </head>
 
   <body>
+    <svg
+      onclick="window.open('https://www.ranoya.com', '_blank')"
+      class="logoextenso"
+      viewBox="0 0 78 37"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect width="78" height="37" fill="transparent"></rect>
+      <path
+        id="parte1"
+        d="M9.12384 8.27164H15.2064L21.289 28.1947H15.2064L9.12384 8.27164Z"
+        fill="var(--high-freq)"
+      ></path>
+      <path
+        id="parte2"
+        d="M25.4037 8.27164H31.4863L37.5688 28.1947H31.4863L25.4037 8.27164Z"
+        fill="var(--high-freq)"
+      ></path>
+      <path
+        id="parte3"
+        d="M33.2752 8.27164H39.3578L45.4403 28.1947H39.3578L33.2752 8.27164Z"
+        fill="var(--high-freq)"
+      ></path>
+      <path
+        id="parte4"
+        d="M56.711 8.27164H62.7936L68.8761 28.1947H62.7936L56.711 8.27164Z"
+        fill="var(--high-freq)"
+      ></path>
+      <path
+        id="parte5"
+        d="M56.6216 8.27164H62.7041L56.6216 28.1947H50.539L56.6216 8.27164Z"
+        fill="var(--high-freq)"
+      ></path>
+      <ellipse
+        id="parte6"
+        cx="21.5573"
+        cy="12.274"
+        rx="4.02523"
+        ry="4.0024"
+        fill="var(--high-freq)"
+      ></ellipse>
+      <ellipse
+        id="parte7"
+        cx="47.945"
+        cy="18.2332"
+        rx="4.02523"
+        ry="4.0024"
+        fill="var(--high-freq)"
+      ></ellipse>
+    </svg>
+
     <div id="menu" onclick="togglemenu();">
       <svg
         style="width: 100%"
@@ -374,7 +771,7 @@
     <div id="pages">
       <svg
         class="pgs pinta"
-        onclick="goto(0)"
+        onclick="simplegoto(0)"
         viewBox="-1 0 11 9"
         style="width: 31px; height: 15px"
         version="1.1"
@@ -385,7 +782,7 @@
 
       <svg
         class="pgs"
-        onclick="goto(1)"
+        onclick="simplegoto(1)"
         viewBox="-1 0 11 9"
         style="width: 31px; height: 15px"
         version="1.1"
@@ -396,7 +793,7 @@
 
       <svg
         class="pgs"
-        onclick="goto(2)"
+        onclick="simplegoto(2)"
         viewBox="-1 0 11 9"
         style="width: 31px; height: 15px"
         version="1.1"
@@ -408,8 +805,9 @@
 
     <div id="coverplate"></div>
     <div id="recursos">
-      <input type="text" />
-      <div class="custombutton">Tudo</div>
+      <div id="filtros"></div>
+
+      <div class="custombutton especial" onclick="limpa()">Tudo</div>
 
       Expressão <a href="javascript:trocacrit(0)" class="grupos">Pictórica</a> |
       <a href="javascript:trocacrit(1)" class="grupos">Dinâmica</a>
@@ -417,10 +815,10 @@
       <br />
 
       Agrupamento
-      <a href="javascript:trocacrit(3)" class="grupos">Tipologia</a> |
-      <a href="javascript:trocacrit(4)" class="grupos">Referência</a>
+      <a href="javascript:trocacrit(2)" class="grupos">Tipologia</a> |
+      <a href="javascript:trocacrit(3)" class="grupos">Referência</a>
 
-      <span id="criterio1">
+      <span class="submenus" id="criterio1">
         <div class="custombutton">Vector Graphics</div>
         <div class="custombutton">Linhas</div>
         <div class="custombutton">LCD</div>
@@ -453,7 +851,7 @@
         <div class="custombutton">Imersão</div>
       </span>
 
-      <span id="criterio2">
+      <span class="submenus" id="criterio2">
         <div class="custombutton">campo total</div>
         <div class="custombutton">transição entre campos totais</div>
         <div class="custombutton">afundamento na tela</div>
@@ -467,277 +865,48 @@
         <div class="custombutton">ponto focal convergente</div>
         <div class="custombutton">mapa tridimensional / espacial</div>
       </span>
+
+      <span class="submenus" id="criterio3"></span>
+      <span class="submenus" id="criterio4"></span>
     </div>
     <div id="p1" class="wrap">
-      <div id="conteudo">
-        <h1>
-          Linguagem Gráfico-Interativa<br />
-          em Artefatos de Alta Interação
-        </h1>
+      <div class="conteudo">
+        <h1 id="p1titulo"></h1>
 
         <div class="bloquinhos">
-          <p><b>O que são artefatos de alta interação comportamental?</b></p>
-
-          <p>
-            Classificamos como artefatos de alta interação, ou de alta interação
-            comportamental, os artefatos computacionais que possuem
-            transformações frenéticas em sua configuração pictórica em tela, em
-            decorrência de respostas dinâmicas às ações dos usuários. Em
-            síntese, são artefatos que possuem um comportamento gráfico muito
-            dinâmico e metamórfico, que se modificam em função das ações das
-            pessoas, ou em um diálogo com elas através do uso.
-          </p>
-
-          <p>
-            De forma geral, os artefatos de alta interação se encontram mais
-            comumente na forma de jogos eletrônicos, narrativas computacionais,
-            ou arte generativa. Tratam-se de softwares intensos em termos
-            gráfico-interativos. Componentes de vídeo são também artefatos com
-            transformações pictóricas frenéticas, mas que não acontecem como
-            respostas ou diálogo às ações de usuários; neste caso, estabelecem
-            uma relação passiva, que ocorrerá mesmo na ausência das pessoas à
-            sua frente, e dessa forma não se enquadram na categoria.
-          </p>
-
-          <p>
-            Já as aplicações, ou as ferramentas, demandam frequentemente alta
-            intensidade de processamento, mas seus aspectos pictóricos e as
-            informações apresentadas visualmente, mudam pouco. Em contraponto,
-            os tratamos como artefatos de baixa interação comportamental.
-          </p>
-
-          <p>
-            Estas categorias separam, de forma muito evidente, dois tipos bem
-            diferentes de artefatos computacionais que são produzidos com
-            abordagens projetuais igualmente distintas.
-          </p>
-
-          <p><b>O que é a linguagem gráfica?</b></p>
-
-          <p>
-            O conceito de alta (ou baixa) interação separa tipos muito
-            diferentes de projetos nas mídias computacionais. Para os estudos de
-            linguagem gráfico-interativa, aqueles que possuem alta interação são
-            mais interessantes por serem visualmente mais ricos e dinâmicos.
-          </p>
-
-          <p>
-            A linguagem gráfico-interativa de um artefato projetado é um
-            problema essencialmente de design. Estes estudos descendem dos
-            estudos de linguagme gráfica, originalmente realizados sobre
-            artefatos em mídia impressa.
-          </p>
-
-          <p>
-            Muito da classificação e enquadramentos sobre jogos e narrativas
-            digitais se dá através de convenções baseadas nas tecnologias que
-            lhes tornam possíveis. As técnicas adotadas e/ou a engenharia
-            utilizada para construção não podem ser confundidas com a linguagem
-            de um artefato, tampouco a forma como ele interage com as pessoas.
-            Denominações como jogos "2D" ou "3D", ou jogos "Side-Scrollers",
-            "First Person Shooters", ou "Top Down", adotadas de forma ampla para
-            qualificação destes produtos, são derivadas da tecnologia empregada
-            para sua construção, e não da forma como as pessoas interpretam
-            aquilo com o que estão em contato. Isto equivale, por exemplo, a
-            categorizar livros pelo tipo de papel utilizado, e não como poemas,
-            ficções ou ensaios.
-          </p>
-
-          <p>
-            Tratamos aqui da forma como os artefatos se expressam graficamente,
-            ou pela perspectiva de quem os utilizas: da leitura feita pelas
-            pessoas sobre as manifestações gráficas destes artefatos.
-            Considerando aspectos de linguagem, um designer projeta um jogo (ou
-            narrativa) com uma "expressão gráfica vetorial", e não um jogo com
-            uma "expressão First Person Shooter", ainda que esta modalidade
-            imponha ao produto uma dimensão esquemática de funcionamento com
-            certas convenções já estabelecidas para seu comportamento, e
-            expectativas já estabelecidas de como deverá se expressar ou
-            interagir com o usuário.
-          </p>
-
-          <p>
-            A linguagem da cinematografia, por exemplo, utiliza termos como
-            dolly back, pan, track, para definir a expressão e forma de leitura
-            que se deseja em uma cena.
-          </p>
-
-          <p>
-            Nesta visualização, tentamos elencar os aspectos que interessam
-            sobre a linguagem nestas mídias.
-          </p>
-
-          <p>
-            <img
-              style="
-                width: 100%;
-                border-top: 1px solid black;
-                border-bottom: 1px solid black;
-              "
-              src="https://lh3.googleusercontent.com/d/1nPSWV-oziff97qpqGQCX6Y99EGPhDcoP"
-            />
-          </p>
+          <div id="bl2"></div>
+          <div id="bl1"></div>
+          <div id="bl4"></div>
+          <div id="bl3"></div>
         </div>
       </div>
     </div>
 
     <div id="p2" class="wrap">
-      <div id="conteudo">
-        <h1>
-          P2 Linguagem Gráfico-Interativa<br />
-          em Artefatos de Alta Interação
-        </h1>
+      <div class="conteudo">
+        <h1 id="p2titulo"></h1>
 
-        <div class="bloquinhos">
-          <p><b>O que são artefatos de alta interação comportamental?</b></p>
-
-          <p>
-            Classificamos como artefatos de alta interação, ou de alta interação
-            comportamental, os artefatos computacionais que possuem
-            transformações frenéticas em sua configuração pictórica em tela, em
-            decorrência de respostas dinâmicas às ações dos usuários. Em
-            síntese, são artefatos que possuem um comportamento gráfico muito
-            dinâmico e metamórfico, que se modificam em função das ações das
-            pessoas, ou em um diálogo com elas através do uso.
-          </p>
-
-          <p>
-            De forma geral, os artefatos de alta interação se encontram mais
-            comumente na forma de jogos eletrônicos, narrativas computacionais,
-            ou arte generativa. Tratam-se de softwares intensos em termos
-            gráfico-interativos. Componentes de vídeo são também artefatos com
-            transformações pictóricas frenéticas, mas que não acontecem como
-            respostas ou diálogo às ações de usuários; neste caso, estabelecem
-            uma relação passiva, que ocorrerá mesmo na ausência das pessoas à
-            sua frente, e dessa forma não se enquadram na categoria.
-          </p>
-
-          <p>
-            Já as aplicações, ou as ferramentas, demandam frequentemente alta
-            intensidade de processamento, mas seus aspectos pictóricos e as
-            informações apresentadas visualmente, mudam pouco. Em contraponto,
-            os tratamos como artefatos de baixa interação comportamental.
-          </p>
-
-          <p>
-            Estas categorias separam, de forma muito evidente, dois tipos bem
-            diferentes de artefatos computacionais que são produzidos com
-            abordagens projetuais igualmente distintas.
-          </p>
-
-          <p><b>O que é a linguagem gráfica?</b></p>
-
-          <p>
-            O conceito de alta (ou baixa) interação separa tipos muito
-            diferentes de projetos nas mídias computacionais. Para os estudos de
-            linguagem gráfico-interativa, aqueles que possuem alta interação são
-            mais interessantes por serem visualmente mais ricos e dinâmicos.
-          </p>
-
-          <p>
-            A linguagem gráfico-interativa de um artefato projetado é um
-            problema essencialmente de design. Estes estudos descendem dos
-            estudos de linguagme gráfica, originalmente realizados sobre
-            artefatos em mídia impressa.
-          </p>
-
-          <p>
-            Muito da classificação e enquadramentos sobre jogos e narrativas
-            digitais se dá através de convenções baseadas nas tecnologias que
-            lhes tornam possíveis. As técnicas adotadas e/ou a engenharia
-            utilizada para construção não podem ser confundidas com a linguagem
-            de um artefato, tampouco a forma como ele interage com as pessoas.
-            Denominações como jogos "2D" ou "3D", ou jogos "Side-Scrollers",
-            "First Person Shooters", ou "Top Down", adotadas de forma ampla para
-            qualificação destes produtos, são derivadas da tecnologia empregada
-            para sua construção, e não da forma como as pessoas interpretam
-            aquilo com o que estão em contato. Isto equivale, por exemplo, a
-            categorizar livros pelo tipo de papel utilizado, e não como poemas,
-            ficções ou ensaios.
-          </p>
-
-          <p>
-            Tratamos aqui da forma como os artefatos se expressam graficamente,
-            ou pela perspectiva de quem os utilizas: da leitura feita pelas
-            pessoas sobre as manifestações gráficas destes artefatos.
-            Considerando aspectos de linguagem, um designer projeta um jogo (ou
-            narrativa) com uma "expressão gráfica vetorial", e não um jogo com
-            uma "expressão First Person Shooter", ainda que esta modalidade
-            imponha ao produto uma dimensão esquemática de funcionamento com
-            certas convenções já estabelecidas para seu comportamento, e
-            expectativas já estabelecidas de como deverá se expressar ou
-            interagir com o usuário.
-          </p>
-
-          <p>
-            A linguagem da cinematografia, por exemplo, utiliza termos como
-            dolly back, pan, track, para definir a expressão e forma de leitura
-            que se deseja em uma cena.
-          </p>
-
-          <p>
-            Nesta visualização, tentamos elencar os aspectos que interessam
-            sobre a linguagem nestas mídias.
-          </p>
-
-          <p>
-            <img
-              style="
-                width: 100%;
-                border-top: 1px solid black;
-                border-bottom: 1px solid black;
-              "
-              src="https://lh3.googleusercontent.com/d/1nPSWV-oziff97qpqGQCX6Y99EGPhDcoP"
-            />
-          </p>
-        </div>
+        <div id="stats"></div>
+        <div id="curadoria"></div>
       </div>
     </div>
 
     <div id="p3" class="wrap">
-      <div id="conteudo">
-        <h1>
+      <div class="conteudo">
+        <h1 id="p3titulo">
           P3 Linguagem Gráfico-Interativa<br />
           em Artefatos de Alta Interação
         </h1>
 
-        <div class="bloquinhos">
-          <p><b>O que são artefatos de alta interação comportamental?</b></p>
-
-          <p>
-            Classificamos como artefatos de alta interação, ou de alta interação
-            comportamental, os artefatos computacionais que possuem
-            transformações frenéticas em sua configuração pictórica em tela, em
-            decorrência de respostas dinâmicas às ações dos usuários. Em
-            síntese, são artefatos que possuem um comportamento gráfico muito
-            dinâmico e metamórfico, que se modificam em função das ações das
-            pessoas, ou em um diálogo com elas através do uso.
-          </p>
-
-          <p>
-            A linguagem da cinematografia, por exemplo, utiliza termos como
-            dolly back, pan, track, para definir a expressão e forma de leitura
-            que se deseja em uma cena.
-          </p>
-
-          <p>
-            Nesta visualização, tentamos elencar os aspectos que interessam
-            sobre a linguagem nestas mídias.
-          </p>
-
-          <p>
-            <img
-              style="
-                width: 100%;
-                border-top: 1px solid black;
-                border-bottom: 1px solid black;
-              "
-              src="https://lh3.googleusercontent.com/d/1nPSWV-oziff97qpqGQCX6Y99EGPhDcoP"
-            />
-          </p>
+        <div id="glossario">
+          <div id="glossariotipo"></div>
+          <div id="glossariopicto"></div>
+          <div id="glossariodina"></div>
         </div>
       </div>
     </div>
+
+    <div id="vistype" style="display: none"></div>
 
     <script>
       let abrefecha = "";
@@ -751,6 +920,9 @@
       let pg = [];
 
       let openmenu = function () {
+        document.getElementById("coverplate").style.width =
+          "calc(100% - 340px)";
+
         wps = document.getElementsByClassName("wrap");
 
         for (let i = 0; i < wps.length; i++) {
@@ -761,6 +933,10 @@
           .querySelector(":root")
           .style.setProperty("--font-basis", "11px");
         menuvisible = true;
+
+        document
+          .getElementsByClassName("logoextenso")[0]
+          .classList.add("zoomlogo");
       };
 
       let closemenu = function () {
@@ -774,6 +950,14 @@
           .querySelector(":root")
           .style.setProperty("--font-basis", "0.75vw");
         menuvisible = false;
+
+        document
+          .getElementsByClassName("logoextenso")[0]
+          .classList.remove("zoomlogo");
+
+        setTimeout(function () {
+          document.getElementById("coverplate").style.width = "100%";
+        }, 600);
       };
 
       let togglemenu = function () {
@@ -796,6 +980,13 @@
           event.keyCode != 40
         ) {
           clearTimeout(abrefecha);
+
+          if (document.getElementsByTagName("input")[0].value == " ") {
+            let inpt = document.getElementsByTagName("input")[0];
+            inpt.value = "";
+            inpt.dispatchEvent(new Event("input", { bubbles: true }));
+          }
+
           document.getElementsByTagName("input")[0].focus();
           openmenu();
           abrefecha = setTimeout(closemenu, 2500);
@@ -819,7 +1010,7 @@
       let goto = function (qp) {
         clearTimeout(abrefecha);
         openmenu();
-        abrefecha = setTimeout(closemenu, 2500);
+        abrefecha = setTimeout(closemenu, 1000);
 
         let delta = qp * -130;
         setTimeout(function () {
@@ -839,18 +1030,200 @@
         pg[p].classList.add("pinta");
       };
 
+      let simplegoto = function (qp) {
+        let delta = qp * -130;
+        document
+          .querySelector(":root")
+          .style.setProperty("--offset-x", delta + "vw");
+
+        p = qp;
+
+        pg = document.getElementsByClassName("pgs");
+
+        for (let k = 0; k < pg.length; k++) {
+          pg[k].classList.remove("pinta");
+        }
+
+        pg[p].classList.add("pinta");
+      };
+
       let next = function () {
         if (p < 2) {
           // máximo de painéis = 2
-          goto(p + 1);
+          simplegoto(p + 1);
         }
       };
 
       let prev = function () {
         if (p > 0) {
-          goto(p - 1);
+          simplegoto(p - 1);
         }
       };
+
+      // Atualiza dados dos inputs
+      const limpa = function () {
+        let inpt = document.getElementsByTagName("input")[0];
+        inpt.value = " ";
+        inpt.dispatchEvent(new Event("input", { bubbles: true }));
+      };
+
+      let hsl2hex = function (h, s, l) {
+        l /= 100;
+        const a = (s * Math.min(l, 1 - l)) / 100;
+        const f = (n) => {
+          const k = (n + h / 30) % 12;
+          const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+          return Math.round(255 * color)
+            .toString(16)
+            .padStart(2, "0"); // convert to Hex and prefix "0" if needed
+        };
+        return `#${f(0)}${f(8)}${f(4)}`;
+      };
+
+      let h = 0;
+      let h2 = h + 180;
+      let hf = 0;
+
+      setInterval(function () {
+        document
+          .querySelector(":root")
+          .style.setProperty("--base-color", hsl2hex(h, 46, 87));
+
+        document
+          .querySelector(":root")
+          .style.setProperty("--base-dark", hsl2hex(h, 46, 44));
+
+        document
+          .querySelector(":root")
+          .style.setProperty("--rebase-color", hsl2hex(h2, 46, 87));
+
+        document
+          .querySelector(":root")
+          .style.setProperty("--high-freq", hsl2hex(hf, 46, 87));
+
+        document
+          .querySelector(":root")
+          .style.setProperty("--high-freq-dark", hsl2hex(hf, 46, 44));
+
+        h++;
+        h2 += 5;
+        hf += 7;
+
+        if (h > 360) {
+          h = 0;
+        }
+
+        if (h2 > 360) {
+          h2 = 0;
+        }
+
+        if (hf > 360) {
+          hf = 0;
+        }
+      }, 10);
+
+      let last = "";
+
+      let sl = function (lnk) {
+        last = document.getElementsByTagName("input")[0].value;
+
+        document.getElementsByTagName("input")[0].value = lnk;
+        document
+          .getElementsByTagName("input")[0]
+          .dispatchEvent(new Event("input", { bubbles: true }));
+      };
+    </script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css"
+    />
+    <script type="module">
+      import {
+        Runtime,
+        Inspector,
+      } from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
+      import define from "https://api.observablehq.com/@ranoya/altainteracaov2.js?v=4";
+      new Runtime().module(define, (name) => {
+        if (name === "viewof filtros")
+          return new Inspector(document.querySelector("#filtros"));
+        if (name === "navexemplos2")
+          return new Inspector(document.querySelector("#criterio1"));
+
+        if (name === "navenquadramentos")
+          return new Inspector(document.querySelector("#criterio2"));
+
+        if (name === "navseries")
+          return new Inspector(document.querySelector("#criterio3"));
+
+        if (name === "navreferencias")
+          return new Inspector(document.querySelector("#criterio4"));
+
+        if (name === "titulop1")
+          return new Inspector(document.querySelector("#p1titulo"));
+
+        if (name === "titulop2")
+          return new Inspector(document.querySelector("#p2titulo"));
+
+        if (name === "titulop3")
+          return new Inspector(document.querySelector("#p3titulo"));
+
+        if (name === "def_altainteracao")
+          return new Inspector(document.querySelector("#bl1"));
+
+        if (name === "def_linguagemgraf")
+          return new Inspector(document.querySelector("#bl2"));
+
+        if (name === "def_dinamica")
+          return new Inspector(document.querySelector("#bl3"));
+
+        if (name === "def_diagrama")
+          return new Inspector(document.querySelector("#bl4"));
+
+        if (name === "vewof formpicto")
+          return new Inspector(document.querySelector("#vistype"));
+
+        if (name === "glossT")
+          return new Inspector(document.querySelector("#glossariotipo"));
+        if (name === "glossP")
+          return new Inspector(document.querySelector("#glossariopicto"));
+        if (name === "glossD")
+          return new Inspector(document.querySelector("#glossariodina"));
+
+        if (name === "stats")
+          return new Inspector(document.querySelector("#stats"));
+        if (name === "curadoria")
+          return new Inspector(document.querySelector("#curadoria"));
+        return [
+          "navindustrias",
+          "navindustriasprincipal",
+          "navenquadramentos",
+          "viewof matselect",
+          "viewof timelineseries",
+          "acionasearch",
+          "subacionasearch",
+          "extras",
+          "tiposdeleituras",
+          "tiposdelinguagem",
+          "subcategorias",
+          "subcatindustria",
+          "reforiginal",
+          "subleituras",
+          "testeC",
+          "custombuttonsprincipal",
+          "custombuttonsprincipalnotudo",
+          "custombuttons",
+          "custombuttonsnotudo",
+          "seriesbuttons",
+          "custombuttonssecundario",
+          "subcustombuttons",
+          "descreveleituras",
+          "descrevelinguages",
+          "refs",
+          "navreferencias",
+          "navseries",
+        ].includes(name);
+      });
     </script>
   </body>
 </html>
