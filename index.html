@@ -64,7 +64,7 @@
       }
 
       :root {
-        --bg-color: rgb(112, 163, 65);
+        --bg-color: #70a341;
         --font-basis: 0.75vw;
         --base-color: #8f998a;
         --base-dark: #8f998a;
@@ -166,7 +166,7 @@
       }
 
       #recursos a {
-        color: black;
+        color: var(--bg-color, black);
         font-family: monospace;
         font-size: 12px;
         line-height: 14px;
@@ -296,7 +296,7 @@
         right: 0;
         top: 0;
         background-color: white;
-        background-color: black;
+        background-color: var(--bg-color, black);
         box-shadow: 3px 3px 12px 1px #444444bf;
         width: calc(100% - 100px);
         height: calc(100% - 100px);
@@ -452,7 +452,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 18px 18px;
-        color: black;
+        color: var(--bg-color, black);
         text-decoration: none;
         font-size: 1.1rem;
         line-height: 1.17rem;
@@ -594,7 +594,7 @@
         position: sticky;
         top: 0;
         z-index: 3;
-        background-color: black;
+        background-color: var(--bg-color, black);
         padding-top: 10px;
         padding-bottom: 10px;
         padding-left: 20px;
