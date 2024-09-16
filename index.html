@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="pinterest" content="nopin" />
+    <meta name="pinterest" content="nohover" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="keywords" content="" />
+    <title>Linguagem Gráfico-Interativa</title>
+    <meta property="og:title" content="Linguagem Gráfico-Interativa" />
+    <meta name="generator" content="plataforma" />
+    <meta name="description" content="Painel de Artefatos de Alta Interação" />
+    <meta
+      property="og:description"
+      content="Painel de Artefatos de Alta Interação"
+    />
+    <meta name="author" content="Guilherme Ranoya" />
+    <meta
+      property="og:url"
+      content="https://linguagemgraficointerativa.vercel.app"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="600" />
+    <meta property="og:site_name" content="Linaguem Gráfico-Interativa" />
+    <meta name="application-name" content="Linaguem Gráfico-Interativa" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image" content="altainteracao600.jpg" />
+    <meta property="og:image:secure_url" content="altainteracao600.jpg" />
+    <link rel="image_src" type="image/jpg" href="altainteracao600.jpg" />
+    <link rel="icon" type="image/png" href="altainteracao16.png" />
+    <link rel="shortcut icon" href="altainteracao57.png" />
+    <link rel="apple-touch-icon" href="altainteracao57.png" />
+    <link rel="apple-touch-icon" href="altainteracao72.png" sizes="72x72" />
+    <link rel="apple-touch-icon" href="altainteracao114.png" sizes="114x114" />
+    <link rel="apple-touch-icon" href="altainteracao144.png" sizes="144x144" />
+    <meta name="msapplication-square70x70logo" content="altainteracao70.png" />
+    <meta
+      name="msapplication-square150x150logo"
+      content="altainteracao150.png"
+    />
+    <meta
+      name="msapplication-wide310x150logo"
+      content="altainteracao310x150.png"
+    />
+    <meta
+      name="msapplication-square310x310logo"
+      content="altainteracao310.png"
+    />
+    <meta name="msapplication-TileColor" content="#000000" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="msapplication-navbutton-color" content="#000000" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#000000" />
+
+    <style>
+      @font-face {
+        font-family: Departure;
+        src: url(DepartureMono-Regular.woff2);
+      }
+
+      @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap");
+
+      :root {
+        --font-basis: 0.75vw;
+        --base-color: #8f998a;
+        --text-color: #6b6b6b;
+        --highlight-color: #069488;
+        --highlight-color: #a728e3;
+        --superhighlight-color: #08d8b5;
+        --superhighlight-color: #8900ff;
+        --offset-x: 0px;
+        --posx-criterios: 0px;
+      }
+
+      body {
+        background-color: var(--base-color, #8f998a);
+        overflow: hidden;
+      }
+
+      html {
+        font-size: var(--font-basis);
+      }
+
+      #p1 {
+        transform: translateX(var(--offset-x));
+      }
+
+      #p2 {
+        transform: translateX(calc(var(--offset-x) + 130vw));
+      }
+
+      #p3 {
+        transform: translateX(calc(var(--offset-x) + 260vw));
+      }
+
+      #coverplate {
+        position: fixed;
+        width: calc(100% - 340px);
+        height: 100%;
+        background-color: var(--base-color, #8f998a);
+        top: 0;
+        right: 0;
+        z-index: 3;
+      }
+
+      #recursos {
+        position: fixed;
+        top: 70px;
+        left: 20px;
+        border: 0;
+        /* border: 1px solid white; */
+        width: 320px;
+        height: calc(100vh - 120px);
+        z-index: 1;
+        text-align: right;
+      }
+
+      #recursos input {
+        font-size: 18px;
+        line-height: 24px;
+        width: calc(100% - 16px - 120px);
+        padding: 8px;
+        border: 0;
+        border-bottom: 1px dashed var(--text-color, #6b6b6b);
+        background-color: transparent;
+        outline: 0;
+        color: var(--text-color, #6b6b6b);
+        font-family: "Departure";
+        margin-right: 12px;
+      }
+
+      #recursos input:focus {
+        border-bottom: 1px dotted white;
+        color: white;
+      }
+
+      #recursos {
+        color: var(--text-color, #6b6b6b);
+        font-family: "Source Code Pro", "Courier New", Courier, monospace;
+        font-size: 12px;
+        line-height: 14px;
+      }
+
+      #recursos a {
+        color: black;
+        font-family: "Source Code Pro", "Courier New", Courier, monospace;
+        font-size: 12px;
+        line-height: 14px;
+
+        margin-left: 4px;
+        margin-right: 4px;
+        margin-top: 15px;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      #recursos a:hover {
+        color: white;
+        text-decoration: none;
+      }
+
+      #recursos span {
+        display: block;
+        width: 320px;
+        position: fixed;
+        z-index: 2;
+        top: 190px;
+        left: 20px;
+
+        transition: transform 0.2s ease-out;
+      }
+
+      #recursos .custombutton {
+        padding: 8px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        display: inline-block;
+        margin-right: 5px;
+        margin-bottom: 7px;
+
+        background-color: var(--text-color, #6b6b6b);
+        color: white;
+        border: 3px solid var(--text-color, #6b6b6b);
+
+        transition: transform 0.3s ease-out;
+
+        font-family: "Source Code Pro", "Courier New", Courier, monospace;
+        font-size: 14px;
+        line-height: 18px;
+
+        cursor: pointer;
+
+        box-shadow: 3px 3px 8px -2px #00000044;
+        /*box-shadow: 3px 3px #00000099;*/
+      }
+
+      #recursos .custombutton:hover {
+        color: var(--text-color, #6b6b6b);
+        border: 3px solid white;
+        background-color: white;
+        transition: transform 0.3s ease-out;
+        cursor: pointer;
+
+        box-shadow: 0px 0px 8px -2px #00000044;
+        /*box-shadow: 0px 0px #00000000;*/
+
+        transform: translate(2px, 2px);
+      }
+
+      #criterio1 {
+        transform: translateX(var(--posx-criterios, 0px));
+      }
+
+      #criterio2 {
+        transform: translateX(calc(var(--posx-criterios, "0px") + 340px));
+      }
+
+      .ativo {
+        color: var(--text-color, #6b6b6b) !important;
+        border: 3px solid white !important;
+        background-color: white !important;
+        transition: transform 0.3s ease-out;
+        cursor: pointer !important;
+
+        box-shadow: 0px 0px 8px -2px #00000044 !important;
+        /*box-shadow: 0px 0px #00000000;*/
+
+        transform: translate(2px, 2px) !important;
+      }
+
+      #pages {
+        position: fixed;
+        z-index: 30000;
+        /* border: 1px solid green; */
+        width: 120px;
+        height: 15px;
+        bottom: 15px;
+        left: calc(50% - 60px);
+        text-align: center;
+        cursor: default;
+      }
+
+      #pages:hover {
+        cursor: default;
+      }
+
+      #pages svg circle {
+        fill: var(--text-color, #6b6b6b);
+      }
+
+      .pinta circle {
+        fill: var(--highlight-color, #069488) !important;
+      }
+
+      #pages svg:hover circle {
+        fill: var(--superhighlight-color, #08d8b5);
+      }
+
+      .wrap {
+        position: fixed;
+        right: 0;
+        top: 0;
+        background-color: white;
+        box-shadow: 3px 3px 12px 1px #444444bf;
+        width: calc(100% - 100px);
+        height: calc(100% - 100px);
+
+        padding: 50px;
+
+        transition: all 0.12s ease-in, transform 0.4s ease-out;
+        z-index: 5;
+      }
+
+      #conteudo {
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+      }
+
+      .zoomout {
+        right: 3vw !important;
+        top: 5vh !important;
+        /* width: calc(75vw - 100px) !important; */
+        width: calc(100vw - 490px) !important;
+        height: calc(90vh - 100px) !important;
+
+        transition: all 0.12s ease-in, transform 0.4s ease-out;
+      }
+
+      #menu {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        width: 20px;
+        height: 20px;
+        z-index: 50000;
+        transition: all 0.2s ease-in;
+      }
+
+      #menu svg {
+        transform-origin: 50% 50%;
+        transition: all 0.2s ease-in;
+      }
+
+      #menu:hover svg {
+        transform: scale(0.6);
+        transition: all 0.2s ease-in;
+      }
+
+      #menu svg path {
+        fill: var(--text-color, #6b6b6b);
+      }
+
+      #menu:hover svg path {
+        fill: var(--superhighlight-color, #08d8b5);
+      }
+
+      h1 {
+        font-family: "Departure";
+        font-size: 2.75rem;
+        line-height: 3.44rem;
+        font-size-adjust: none;
+        font-stretch: 100%;
+        font-style: normal;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizelegibility;
+        text-transform: uppercase;
+        color: var(--base-color, #8f998a);
+      }
+
+      .bloquinhos {
+        column-count: 4;
+        gap: 5rem;
+        font-size: 1.17rem;
+        line-height: 1.37rem;
+        font-family: "Source Code Pro", "Courier New", Courier, monospace;
+        font-optical-sizing: auto;
+        font-weight: 500;
+        font-style: normal;
+      }
+
+      p {
+        margin-top: 0;
+        color: var(--text-color, #6b6b6b);
+      }
+
+      b {
+        color: var(--highlight-color, #244614);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="menu" onclick="togglemenu();">
+      <svg
+        style="width: 100%"
+        viewBox="0 0 340 340"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M170 340C263.887 340 340 263.889 340 170C340 76.1113 263.887 0 170 0C76.1133 0 0 76.1113 0 170C0 263.889 76.1133 340 170 340ZM170 266C223.02 266 266 223.02 266 170C266 116.98 223.02 74 170 74C116.98 74 74 116.98 74 170C74 223.02 116.98 266 170 266Z"
+        />
+      </svg>
+    </div>
+    <div id="pages">
+      <svg
+        class="pgs pinta"
+        onclick="goto(0)"
+        viewBox="-1 0 11 9"
+        style="width: 31px; height: 15px"
+        version="1.1"
+        xmlns="https://www.w3.org/2000/svg"
+      >
+        <circle cx="4.5" cy="4.5" r="2" />
+      </svg>
+
+      <svg
+        class="pgs"
+        onclick="goto(1)"
+        viewBox="-1 0 11 9"
+        style="width: 31px; height: 15px"
+        version="1.1"
+        xmlns="https://www.w3.org/2000/svg"
+      >
+        <circle cx="4.5" cy="4.5" r="2" />
+      </svg>
+
+      <svg
+        class="pgs"
+        onclick="goto(2)"
+        viewBox="-1 0 11 9"
+        style="width: 31px; height: 15px"
+        version="1.1"
+        xmlns="https://www.w3.org/2000/svg"
+      >
+        <circle cx="4.5" cy="4.5" r="2" />
+      </svg>
+    </div>
+
+    <div id="coverplate"></div>
+    <div id="recursos">
+      <input type="text" />
+      <div class="custombutton">Tudo</div>
+
+      Expressão <a href="javascript:trocacrit(0)" class="grupos">Pictórica</a> |
+      <a href="javascript:trocacrit(1)" class="grupos">Dinâmica</a>
+
+      <br />
+
+      Agrupamento
+      <a href="javascript:trocacrit(3)" class="grupos">Tipologia</a> |
+      <a href="javascript:trocacrit(4)" class="grupos">Referência</a>
+
+      <span id="criterio1">
+        <div class="custombutton">Vector Graphics</div>
+        <div class="custombutton">Linhas</div>
+        <div class="custombutton">LCD</div>
+        <div class="custombutton">Retrô</div>
+        <div class="custombutton">Pixel Art</div>
+        <div class="custombutton">Clássica</div>
+        <div class="custombutton">Dithering</div>
+        <div class="custombutton">Cute</div>
+        <div class="custombutton">3D</div>
+        <div class="custombutton">Isométrico</div>
+        <div class="custombutton">Esquemático</div>
+        <div class="custombutton">Storybook Realism</div>
+        <div class="custombutton ativo">VGA</div>
+        <div class="custombutton">3D de processamento limitado</div>
+        <div class="custombutton">3D com Mesh limitada</div>
+        <div class="custombutton">Popup</div>
+        <div class="custombutton">Cartoon</div>
+        <div class="custombutton">Moderno</div>
+        <div class="custombutton">Poligonais</div>
+        <div class="custombutton">Low Poly</div>
+        <div class="custombutton">Releitura</div>
+        <div class="custombutton">Voxel Pixel Art</div>
+        <div class="custombutton">2bit</div>
+        <div class="custombutton">Comics</div>
+        <div class="custombutton">Cut Out Animation</div>
+        <div class="custombutton">Corporate Memphis</div>
+        <div class="custombutton">Traço Manual</div>
+        <div class="custombutton">Alto Contraste</div>
+        <div class="custombutton">Lego</div>
+        <div class="custombutton">Imersão</div>
+      </span>
+
+      <span id="criterio2">
+        <div class="custombutton">campo total</div>
+        <div class="custombutton">transição entre campos totais</div>
+        <div class="custombutton">afundamento na tela</div>
+        <div class="custombutton">linear para um sentido</div>
+        <div class="custombutton">campo parcial</div>
+        <div class="custombutton">leitura horizontal</div>
+        <div class="custombutton">leitura vertical</div>
+        <div class="custombutton">mapa bidimensional / plano</div>
+        <div class="custombutton">linear nos dois sentidos / eixo</div>
+        <div class="custombutton">oblíquo</div>
+        <div class="custombutton">ponto focal convergente</div>
+        <div class="custombutton">mapa tridimensional / espacial</div>
+      </span>
+    </div>
+    <div id="p1" class="wrap">
+      <div id="conteudo">
+        <h1>
+          Linguagem Gráfico-Interativa<br />
+          em Artefatos de Alta Interação
+        </h1>
+
+        <div class="bloquinhos">
+          <p><b>O que são artefatos de alta interação comportamental?</b></p>
+
+          <p>
+            Classificamos como artefatos de alta interação, ou de alta interação
+            comportamental, os artefatos computacionais que possuem
+            transformações frenéticas em sua configuração pictórica em tela, em
+            decorrência de respostas dinâmicas às ações dos usuários. Em
+            síntese, são artefatos que possuem um comportamento gráfico muito
+            dinâmico e metamórfico, que se modificam em função das ações das
+            pessoas, ou em um diálogo com elas através do uso.
+          </p>
+
+          <p>
+            De forma geral, os artefatos de alta interação se encontram mais
+            comumente na forma de jogos eletrônicos, narrativas computacionais,
+            ou arte generativa. Tratam-se de softwares intensos em termos
+            gráfico-interativos. Componentes de vídeo são também artefatos com
+            transformações pictóricas frenéticas, mas que não acontecem como
+            respostas ou diálogo às ações de usuários; neste caso, estabelecem
+            uma relação passiva, que ocorrerá mesmo na ausência das pessoas à
+            sua frente, e dessa forma não se enquadram na categoria.
+          </p>
+
+          <p>
+            Já as aplicações, ou as ferramentas, demandam frequentemente alta
+            intensidade de processamento, mas seus aspectos pictóricos e as
+            informações apresentadas visualmente, mudam pouco. Em contraponto,
+            os tratamos como artefatos de baixa interação comportamental.
+          </p>
+
+          <p>
+            Estas categorias separam, de forma muito evidente, dois tipos bem
+            diferentes de artefatos computacionais que são produzidos com
+            abordagens projetuais igualmente distintas.
+          </p>
+
+          <p><b>O que é a linguagem gráfica?</b></p>
+
+          <p>
+            O conceito de alta (ou baixa) interação separa tipos muito
+            diferentes de projetos nas mídias computacionais. Para os estudos de
+            linguagem gráfico-interativa, aqueles que possuem alta interação são
+            mais interessantes por serem visualmente mais ricos e dinâmicos.
+          </p>
+
+          <p>
+            A linguagem gráfico-interativa de um artefato projetado é um
+            problema essencialmente de design. Estes estudos descendem dos
+            estudos de linguagme gráfica, originalmente realizados sobre
+            artefatos em mídia impressa.
+          </p>
+
+          <p>
+            Muito da classificação e enquadramentos sobre jogos e narrativas
+            digitais se dá através de convenções baseadas nas tecnologias que
+            lhes tornam possíveis. As técnicas adotadas e/ou a engenharia
+            utilizada para construção não podem ser confundidas com a linguagem
+            de um artefato, tampouco a forma como ele interage com as pessoas.
+            Denominações como jogos "2D" ou "3D", ou jogos "Side-Scrollers",
+            "First Person Shooters", ou "Top Down", adotadas de forma ampla para
+            qualificação destes produtos, são derivadas da tecnologia empregada
+            para sua construção, e não da forma como as pessoas interpretam
+            aquilo com o que estão em contato. Isto equivale, por exemplo, a
+            categorizar livros pelo tipo de papel utilizado, e não como poemas,
+            ficções ou ensaios.
+          </p>
+
+          <p>
+            Tratamos aqui da forma como os artefatos se expressam graficamente,
+            ou pela perspectiva de quem os utilizas: da leitura feita pelas
+            pessoas sobre as manifestações gráficas destes artefatos.
+            Considerando aspectos de linguagem, um designer projeta um jogo (ou
+            narrativa) com uma "expressão gráfica vetorial", e não um jogo com
+            uma "expressão First Person Shooter", ainda que esta modalidade
+            imponha ao produto uma dimensão esquemática de funcionamento com
+            certas convenções já estabelecidas para seu comportamento, e
+            expectativas já estabelecidas de como deverá se expressar ou
+            interagir com o usuário.
+          </p>
+
+          <p>
+            A linguagem da cinematografia, por exemplo, utiliza termos como
+            dolly back, pan, track, para definir a expressão e forma de leitura
+            que se deseja em uma cena.
+          </p>
+
+          <p>
+            Nesta visualização, tentamos elencar os aspectos que interessam
+            sobre a linguagem nestas mídias.
+          </p>
+
+          <p>
+            <img
+              style="
+                width: 100%;
+                border-top: 1px solid black;
+                border-bottom: 1px solid black;
+              "
+              src="https://lh3.googleusercontent.com/d/1nPSWV-oziff97qpqGQCX6Y99EGPhDcoP"
+            />
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div id="p2" class="wrap">
+      <div id="conteudo">
+        <h1>
+          P2 Linguagem Gráfico-Interativa<br />
+          em Artefatos de Alta Interação
+        </h1>
+
+        <div class="bloquinhos">
+          <p><b>O que são artefatos de alta interação comportamental?</b></p>
+
+          <p>
+            Classificamos como artefatos de alta interação, ou de alta interação
+            comportamental, os artefatos computacionais que possuem
+            transformações frenéticas em sua configuração pictórica em tela, em
+            decorrência de respostas dinâmicas às ações dos usuários. Em
+            síntese, são artefatos que possuem um comportamento gráfico muito
+            dinâmico e metamórfico, que se modificam em função das ações das
+            pessoas, ou em um diálogo com elas através do uso.
+          </p>
+
+          <p>
+            De forma geral, os artefatos de alta interação se encontram mais
+            comumente na forma de jogos eletrônicos, narrativas computacionais,
+            ou arte generativa. Tratam-se de softwares intensos em termos
+            gráfico-interativos. Componentes de vídeo são também artefatos com
+            transformações pictóricas frenéticas, mas que não acontecem como
+            respostas ou diálogo às ações de usuários; neste caso, estabelecem
+            uma relação passiva, que ocorrerá mesmo na ausência das pessoas à
+            sua frente, e dessa forma não se enquadram na categoria.
+          </p>
+
+          <p>
+            Já as aplicações, ou as ferramentas, demandam frequentemente alta
+            intensidade de processamento, mas seus aspectos pictóricos e as
+            informações apresentadas visualmente, mudam pouco. Em contraponto,
+            os tratamos como artefatos de baixa interação comportamental.
+          </p>
+
+          <p>
+            Estas categorias separam, de forma muito evidente, dois tipos bem
+            diferentes de artefatos computacionais que são produzidos com
+            abordagens projetuais igualmente distintas.
+          </p>
+
+          <p><b>O que é a linguagem gráfica?</b></p>
+
+          <p>
+            O conceito de alta (ou baixa) interação separa tipos muito
+            diferentes de projetos nas mídias computacionais. Para os estudos de
+            linguagem gráfico-interativa, aqueles que possuem alta interação são
+            mais interessantes por serem visualmente mais ricos e dinâmicos.
+          </p>
+
+          <p>
+            A linguagem gráfico-interativa de um artefato projetado é um
+            problema essencialmente de design. Estes estudos descendem dos
+            estudos de linguagme gráfica, originalmente realizados sobre
+            artefatos em mídia impressa.
+          </p>
+
+          <p>
+            Muito da classificação e enquadramentos sobre jogos e narrativas
+            digitais se dá através de convenções baseadas nas tecnologias que
+            lhes tornam possíveis. As técnicas adotadas e/ou a engenharia
+            utilizada para construção não podem ser confundidas com a linguagem
+            de um artefato, tampouco a forma como ele interage com as pessoas.
+            Denominações como jogos "2D" ou "3D", ou jogos "Side-Scrollers",
+            "First Person Shooters", ou "Top Down", adotadas de forma ampla para
+            qualificação destes produtos, são derivadas da tecnologia empregada
+            para sua construção, e não da forma como as pessoas interpretam
+            aquilo com o que estão em contato. Isto equivale, por exemplo, a
+            categorizar livros pelo tipo de papel utilizado, e não como poemas,
+            ficções ou ensaios.
+          </p>
+
+          <p>
+            Tratamos aqui da forma como os artefatos se expressam graficamente,
+            ou pela perspectiva de quem os utilizas: da leitura feita pelas
+            pessoas sobre as manifestações gráficas destes artefatos.
+            Considerando aspectos de linguagem, um designer projeta um jogo (ou
+            narrativa) com uma "expressão gráfica vetorial", e não um jogo com
+            uma "expressão First Person Shooter", ainda que esta modalidade
+            imponha ao produto uma dimensão esquemática de funcionamento com
+            certas convenções já estabelecidas para seu comportamento, e
+            expectativas já estabelecidas de como deverá se expressar ou
+            interagir com o usuário.
+          </p>
+
+          <p>
+            A linguagem da cinematografia, por exemplo, utiliza termos como
+            dolly back, pan, track, para definir a expressão e forma de leitura
+            que se deseja em uma cena.
+          </p>
+
+          <p>
+            Nesta visualização, tentamos elencar os aspectos que interessam
+            sobre a linguagem nestas mídias.
+          </p>
+
+          <p>
+            <img
+              style="
+                width: 100%;
+                border-top: 1px solid black;
+                border-bottom: 1px solid black;
+              "
+              src="https://lh3.googleusercontent.com/d/1nPSWV-oziff97qpqGQCX6Y99EGPhDcoP"
+            />
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div id="p3" class="wrap">
+      <div id="conteudo">
+        <h1>
+          P3 Linguagem Gráfico-Interativa<br />
+          em Artefatos de Alta Interação
+        </h1>
+
+        <div class="bloquinhos">
+          <p><b>O que são artefatos de alta interação comportamental?</b></p>
+
+          <p>
+            Classificamos como artefatos de alta interação, ou de alta interação
+            comportamental, os artefatos computacionais que possuem
+            transformações frenéticas em sua configuração pictórica em tela, em
+            decorrência de respostas dinâmicas às ações dos usuários. Em
+            síntese, são artefatos que possuem um comportamento gráfico muito
+            dinâmico e metamórfico, que se modificam em função das ações das
+            pessoas, ou em um diálogo com elas através do uso.
+          </p>
+
+          <p>
+            A linguagem da cinematografia, por exemplo, utiliza termos como
+            dolly back, pan, track, para definir a expressão e forma de leitura
+            que se deseja em uma cena.
+          </p>
+
+          <p>
+            Nesta visualização, tentamos elencar os aspectos que interessam
+            sobre a linguagem nestas mídias.
+          </p>
+
+          <p>
+            <img
+              style="
+                width: 100%;
+                border-top: 1px solid black;
+                border-bottom: 1px solid black;
+              "
+              src="https://lh3.googleusercontent.com/d/1nPSWV-oziff97qpqGQCX6Y99EGPhDcoP"
+            />
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let abrefecha = "";
+
+      let menuvisible = false;
+
+      let wps = [];
+
+      let p = 0;
+
+      let pg = [];
+
+      let openmenu = function () {
+        wps = document.getElementsByClassName("wrap");
+
+        for (let i = 0; i < wps.length; i++) {
+          wps[i].classList.add("zoomout");
+        }
+
+        document
+          .querySelector(":root")
+          .style.setProperty("--font-basis", "11px");
+        menuvisible = true;
+      };
+
+      let closemenu = function () {
+        wps = document.getElementsByClassName("wrap");
+
+        for (let i = 0; i < wps.length; i++) {
+          wps[i].classList.remove("zoomout");
+        }
+
+        document
+          .querySelector(":root")
+          .style.setProperty("--font-basis", "0.75vw");
+        menuvisible = false;
+      };
+
+      let togglemenu = function () {
+        if (menuvisible) {
+          closemenu();
+        } else {
+          openmenu();
+        }
+      };
+
+      document.addEventListener("keydown", function (event) {
+        console.log(event.keyCode);
+
+        if (
+          event.keyCode != 34 &&
+          event.keyCode != 33 &&
+          event.keyCode != 39 &&
+          event.keyCode != 37 &&
+          event.keyCode != 38 &&
+          event.keyCode != 40
+        ) {
+          clearTimeout(abrefecha);
+          document.getElementsByTagName("input")[0].focus();
+          openmenu();
+          abrefecha = setTimeout(closemenu, 2500);
+        }
+
+        if (event.keyCode == 39 || event.keyCode == 40 || event.keyCode == 34) {
+          next();
+        }
+
+        if (event.keyCode == 37 || event.keyCode == 38 || event.keyCode == 33) {
+          prev();
+        }
+      });
+
+      let trocacrit = function (qc) {
+        document
+          .querySelector(":root")
+          .style.setProperty("--posx-criterios", -340 * qc + "px");
+      };
+
+      let goto = function (qp) {
+        clearTimeout(abrefecha);
+        openmenu();
+        abrefecha = setTimeout(closemenu, 2500);
+
+        let delta = qp * -130;
+        setTimeout(function () {
+          document
+            .querySelector(":root")
+            .style.setProperty("--offset-x", delta + "vw");
+        }, 400);
+
+        p = qp;
+
+        pg = document.getElementsByClassName("pgs");
+
+        for (let k = 0; k < pg.length; k++) {
+          pg[k].classList.remove("pinta");
+        }
+
+        pg[p].classList.add("pinta");
+      };
+
+      let next = function () {
+        if (p < 2) {
+          // máximo de painéis = 2
+          goto(p + 1);
+        }
+      };
+
+      let prev = function () {
+        if (p > 0) {
+          goto(p - 1);
+        }
+      };
+    </script>
+  </body>
+</html>
