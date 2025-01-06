@@ -1,0 +1,50 @@
+{
+  "short_name": "Linguagem Interativa",
+  "name": "Linguagen Gráfico-Interativas em Artefatos de Alta Interação",
+  "icons": [
+    {
+      "src": "linguagens1024.png",
+      "type": "image/png",
+      "sizes": "1024x1024"
+    },
+    {
+      "src": "linguagens512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "linguagens256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "linguagens144.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "linguagens128.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "linguagens48.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "linguagens32.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "linguagens16.png",
+      "type": "image/png",
+      "sizes": "16x16"
+    }
+  ],
+  "start_url": "https://linguagensinterativas.vercel.app/",
+  "display": "fullscreen",
+  "theme_color": "#ffffff",
+  "background_color": "#000000"
+}
