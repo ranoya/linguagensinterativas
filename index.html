@@ -234,6 +234,10 @@
         transform: translateX(calc(var(--posx-criterios, "0px") + 1020px));
       }
 
+      #criterio5 {
+        transform: translateX(calc(var(--posx-criterios, "0px") + 1360px));
+      }
+
       .ativo {
         color: var(--text-color, #6b6b6b) !important;
         border: 3px solid white !important;
@@ -803,8 +807,13 @@
       <br />
 
       Agrupamento
-      <a href="javascript:trocacrit(2)" class="grupos">Tipologia</a> |
-      <a href="javascript:trocacrit(3)" class="grupos">Referência</a>
+      <a href="javascript:trocacrit(2)" class="grupos">Coleções</a> |
+      <a href="javascript:trocacrit(3)" class="grupos">Estilos</a>
+
+      <br />
+
+      Indústria
+      <a href="javascript:trocacrit(5)" class="grupos">Tipologia</a>
 
       <span class="submenus" id="criterio1">
         <div class="custombutton">Vector Graphics</div>
@@ -856,6 +865,7 @@
 
       <span class="submenus" id="criterio3"></span>
       <span class="submenus" id="criterio4"></span>
+      <span class="submenus" id="criterio5"></span>
     </div>
     <div id="p1" class="wrap">
       <div class="conteudo">
@@ -1146,6 +1156,9 @@
 
         if (name === "navreferencias")
           return new Inspector(document.querySelector("#criterio4"));
+
+        if (name === "navind")
+          return new Inspector(document.querySelector("#criterio5"));
 
         if (name === "titulop1")
           return new Inspector(document.querySelector("#p1titulo"));
