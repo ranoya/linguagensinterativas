@@ -1260,7 +1260,7 @@
         let insiste = setInterval(function () {
           if (document.getElementById("filtros").innerHTML.match(/input/i)) {
             clearInterval(insiste);
-            sl($_GET["filtra"]);
+            sl(decodeURI($_GET["filtra"]));
             simplegoto(1);
           }
         }, 100);
