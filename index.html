@@ -1235,5 +1235,31 @@
         ].includes(name);
       });
     </script>
+
+    <script>
+      $_GET = [];
+      (function () {
+        corte = window.location.href.toString().indexOf("?");
+        if (corte > 0) {
+          argumento = window.location.href.toString().substring(corte + 1);
+          argumentos = argumento.split("&");
+          for (arg in argumentos) {
+            let argCorte = argumentos[arg].indexOf("=");
+            $_GET[argumentos[arg].substring(0, argCorte)] = argumentos[
+              arg
+            ].substring(argCorte + 1);
+          }
+        }
+      })();
+
+      if (
+        typeof $_GET["filtra"] != "undefined" &&
+        $_GET["filtra"] != null &&
+        $_GET["filtra"] != ""
+      ) {
+        sl($_GET["filtra"]);
+        simplegoto(1);
+      }
+    </script>
   </body>
 </html>
