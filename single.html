@@ -1240,7 +1240,9 @@
       }
 
       if (typeof $_GET["titulo"] != 'undefined' && $_GET["titulo"] != null && $_GET["titulo"] != '') {
-         document.getElementById("p2titulo").innerHTML = $_GET["titulo"];
+         setTimeout(function() {
+            document.getElementById("p2titulo").innerHTML = $_GET["titulo"];
+         }, 2000);
       }
       
     </script>
