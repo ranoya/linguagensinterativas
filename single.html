@@ -771,40 +771,7 @@
         />
       </svg>
     </div>
-    <div id="pages">
-      <svg
-        class="pgs pinta"
-        onclick="simplegoto(0)"
-        viewBox="-1 0 11 9"
-        style="width: 31px; height: 15px"
-        version="1.1"
-        xmlns="https://www.w3.org/2000/svg"
-      >
-        <circle cx="4.5" cy="4.5" r="2" />
-      </svg>
-
-      <svg
-        class="pgs"
-        onclick="simplegoto(1)"
-        viewBox="-1 0 11 9"
-        style="width: 31px; height: 15px"
-        version="1.1"
-        xmlns="https://www.w3.org/2000/svg"
-      >
-        <circle cx="4.5" cy="4.5" r="2" />
-      </svg>
-
-      <svg
-        class="pgs"
-        onclick="simplegoto(2)"
-        viewBox="-1 0 11 9"
-        style="width: 31px; height: 15px"
-        version="1.1"
-        xmlns="https://www.w3.org/2000/svg"
-      >
-        <circle cx="4.5" cy="4.5" r="2" />
-      </svg>
-    </div>
+    
 
     <div id="coverplate"></div>
     <div id="recursos">
@@ -1268,10 +1235,14 @@
           if (document.getElementById("filtros").innerHTML.match(/input/i)) {
             clearInterval(insiste);
             sl(decodeURI($_GET["filtra"]));
-            simplegoto(1);
           }
         }, 100);
       }
+
+      if (typeof $_GET["titulo"] != 'undefined' && $_GET["titulo"] != null && $_GET["titulo"] != '') {
+         document.getElementById("p2titulo").innerHTML = $_GET["titulo"];
+      }
+      
     </script>
   </body>
 </html>
