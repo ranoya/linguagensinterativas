@@ -75,6 +75,10 @@
         font-size: var(--font-basis);
       }
 
+      #p1 {
+        transform: translateX(calc(var(--offset-x) + 130vw));
+      }
+
       #p2 {
         
       }
@@ -767,7 +771,40 @@
         />
       </svg>
     </div>
-    
+    <div id="pages">
+      <svg
+        class="pgs pinta"
+        onclick="simplegoto(0)"
+        viewBox="-1 0 11 9"
+        style="width: 31px; height: 15px"
+        version="1.1"
+        xmlns="https://www.w3.org/2000/svg"
+      >
+        <circle cx="4.5" cy="4.5" r="2" />
+      </svg>
+
+      <svg
+        class="pgs"
+        onclick="simplegoto(1)"
+        viewBox="-1 0 11 9"
+        style="width: 31px; height: 15px"
+        version="1.1"
+        xmlns="https://www.w3.org/2000/svg"
+      >
+        <circle cx="4.5" cy="4.5" r="2" />
+      </svg>
+
+      <svg
+        class="pgs"
+        onclick="simplegoto(2)"
+        viewBox="-1 0 11 9"
+        style="width: 31px; height: 15px"
+        version="1.1"
+        xmlns="https://www.w3.org/2000/svg"
+      >
+        <circle cx="4.5" cy="4.5" r="2" />
+      </svg>
+    </div>
 
     <div id="coverplate"></div>
     <div id="recursos">
@@ -843,7 +880,18 @@
       <span class="submenus" id="criterio5"></span>
       <span class="submenus" id="criterio6"></span>
     </div>
+    <div id="p1" class="wrap">
+      <div class="conteudo">
+        <h1 id="p1titulo"></h1>
 
+        <div class="bloquinhos">
+          <div id="bl2"></div>
+          <div id="bl1"></div>
+          <div id="bl4"></div>
+          <div id="bl3"></div>
+        </div>
+      </div>
+    </div>
 
     <div id="p2" class="wrap">
       <div class="conteudo">
@@ -1220,7 +1268,7 @@
           if (document.getElementById("filtros").innerHTML.match(/input/i)) {
             clearInterval(insiste);
             sl(decodeURI($_GET["filtra"]));
-            
+            simplegoto(1);
           }
         }, 100);
       }
