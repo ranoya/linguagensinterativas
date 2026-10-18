@@ -1243,6 +1243,12 @@
          setTimeout(function() {
             document.getElementById("p2titulo").innerHTML = decodeURIComponent($_GET["titulo"]);
          }, 2000);
+
+          document.getElementsByTagName("input")[0].addEventListener("input", (event) => { 
+
+            document.getElementById("p2titulo").innerHTML = decodeURIComponent($_GET["titulo"]);
+
+          });
       }
       
     </script>
